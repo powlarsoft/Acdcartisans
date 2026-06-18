@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart - AC/DC Artisans</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">AC/DC ARTISANS</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="admin/dashboard.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cart Summary -->
+  <section class="cart-summary">
+    <h1>Your Shopping Cart</h1>
+    <table>
+      <tr>
+        <th>Product</th><th>Quantity</th><th>Price</th><th>Total</th>
+      </tr>
+      <tr>
+        <td>200Ah Lithium Battery</td>
+        <td><input type="number" value="1"></td>
+        <td>₦250,000</td>
+        <td>₦250,000</td>
+      </tr>
+      <tr>
+        <td>400W Solar Panel</td>
+        <td><input type="number" value="2"></td>
+        <td>₦75,000</td>
+        <td>₦150,000</td>
+      </tr>
+    </table>
+    <p class="subtotal">Subtotal: ₦400,000</p>
+  </section>
+
+  <!-- Delivery Options -->
+  <section class="delivery">
+    <h2>Delivery Information</h2>
+    <form>
+      <label>Full Name</label>
+      <input type="text" required>
+      <label>Address</label>
+      <input type="text" required>
+      <label>City</label>
+      <select>
+        <option>Lagos</option>
+        <option>Abuja</option>
+        <option>Port Harcourt</option>
+        <option>Other</option>
+      </select>
+      <label>Phone Number</label>
+      <input type="tel" required>
+    </form>
+  </section>
+
+  <!-- Payment Options -->
+  <section class="payment">
+    <h2>Payment Method</h2>
+    <label><input type="radio" name="payment" checked> Paystack</label><br>
+    <label><input type="radio" name="payment"> Flutterwave</label><br>
+    <label><input type="radio" name="payment"> Visa/Mastercard</label><br>
+    <label><input type="radio" name="payment"> Bank Transfer</label>
+  </section>
+
+  <!-- Checkout Button -->
+  <section class="checkout">
+    <button>Confirm Order</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Secure Payments • Nationwide Delivery • 5-Year Warranty</p>
+    <p><a href="admin/dashboard.html">Admin Login</a></p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
