@@ -5,6 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - AC/DC Artisans</title>
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .admin-dashboard {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+    .admin-sidebar {
+      background: #004d40;
+      color: white;
+      padding: 2rem 1.5rem;
+    }
+    .admin-sidebar h2 {
+      margin-bottom: 2rem;
+      color: #ffcc00;
+    }
+    .admin-sidebar ul {
+      list-style: none;
+    }
+    .admin-sidebar li {
+      padding: 12px 15px;
+      margin: 6px 0;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .admin-sidebar li:hover {
+      background: #00695c;
+    }
+    .admin-sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+    .admin-main {
+      padding: 2rem;
+      background: #f8f9fa;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .stat-card h3 {
+      margin: 0.5rem 0;
+      font-size: 2rem;
+      color: #004d40;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th {
+      background: #004d40;
+      color: white;
+    }
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .shipped { background: #d4edda; color: #155724; }
+    .processing { background: #fff3cd; color: #856404; }
+  </style>
 </head>
 <body>
   <div class="admin-dashboard">
@@ -13,38 +92,97 @@
       <h2>AC/DC Artisans</h2>
       <ul>
         <li><a href="../index.html">← Storefront</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Settings</a></li>
+        <li><a href="#">📦 Products</a></li>
+        <li><a href="#">🛒 Orders</a></li>
+        <li><a href="#">👥 Customers</a></li>
+        <li><a href="#">📊 Analytics</a></li>
+        <li><a href="#">⚙️ Settings</a></li>
       </ul>
+      
+      <button onclick="logout()" style="margin-top: 3rem; width: 100%; padding: 12px; background: #ffcc00; color: #004d40; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+        Logout
+      </button>
     </aside>
 
     <!-- Main Content -->
     <main class="admin-main">
-      <h1>Welcome, Admin</h1>
-      
-      <div class="admin-card">
-        <h2>Quick Stats</h2>
-        <p><strong>Total Sales:</strong> ₦12,450,000</p>
-        <p><strong>New Orders:</strong> 23</p>
-        <p><strong>Low Stock:</strong> 4 items</p>
+      <h1>Welcome back, Admin 👋</h1>
+      <p style="color:#666; margin-bottom: 2rem;">Here's what's happening with your store today</p>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>₦12.8M</h3>
+          <p>Total Revenue</p>
+        </div>
+        <div class="stat-card">
+          <h3>47</h3>
+          <p>Orders This Month</p>
+        </div>
+        <div class="stat-card">
+          <h3>18</h3>
+          <p>Low Stock Items</p>
+        </div>
+        <div class="stat-card">
+          <h3>4.9</h3>
+          <p>Average Rating</p>
+        </div>
       </div>
 
+      <!-- Recent Orders -->
       <div class="admin-card">
         <h2>Recent Orders</h2>
         <table>
-          <tr><th>Order ID</th><th>Customer</th><th>Status</th><th>Total</th></tr>
-          <tr><td>#1023</td><td>Chinedu A.</td><td>Shipped</td><td>₦250,000</td></tr>
-          <tr><td>#1024</td><td>Aisha L.</td><td>Processing</td><td>₦450,000</td></tr>
-          <tr><td>#1025</td><td>Emeka O.</td><td>Delivered</td><td>₦185,000</td></tr>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#ORD-1028</td>
+              <td>Chinedu A.</td>
+              <td>₦250,000</td>
+              <td><span class="status shipped">Shipped</span></td>
+              <td>Today</td>
+            </tr>
+            <tr>
+              <td>#ORD-1027</td>
+              <td>Aisha Lawal</td>
+              <td>₦685,000</td>
+              <td><span class="status processing">Processing</span></td>
+              <td>Yesterday</td>
+            </tr>
+            <tr>
+              <td>#ORD-1026</td>
+              <td>Emeka Obi</td>
+              <td>₦185,000</td>
+              <td><span class="status shipped">Shipped</span></td>
+              <td>2 days ago</td>
+            </tr>
+          </tbody>
         </table>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="admin-card">
+        <h2>Quick Actions</h2>
+        <button onclick="alert('Product management coming soon...')">Add New Product</button>
+        <button onclick="alert('Order management coming soon...')">View All Orders</button>
       </div>
     </main>
   </div>
 
-  <script src="../js/app.js"></script>
+  <script>
+    function logout() {
+      if (confirm("Are you sure you want to logout?")) {
+        window.location.href = "../index.html";
+      }
+    }
+  </script>
 </body>
 </html>
