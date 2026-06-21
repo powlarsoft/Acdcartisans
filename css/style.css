@@ -167,6 +167,74 @@ nav a {
   }
 }
 
+
+/* Contact Page Layout */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.contact-layout .map iframe {
+    width: 100%;       /* fills the column */
+    height: 350px;     /* fixed height to match wireframe */
+    border: 2px solid var(--neutral-color);
+    border-radius: 6px;
+}
+
+/* Company Info */
+.company-info {
+    margin: 2rem 0;
+    text-align: center;
+}
+.company-info p {
+    margin: 0.5rem 0;
+}
+
+/* Contact Form */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+.contact-form label,
+.contact-form legend {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--neutral-color);
+    border-radius: 4px;
+}
+.contact-form fieldset {
+    border: 1px solid var(--neutral-color);
+    padding: 1rem;
+    border-radius: 6px;
+}
+/* stack radio buttons vertically */
+.contact-form fieldset label {
+    display: block;
+    margin-top: 0.5rem;
+}
+.contact-form button.btn-submit {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+.contact-form button.btn-submit:hover {
+    background-color: var(--accent1-color);
+}
+
 /* Categories & Featured */
 .categories .grid, .product-gallery, .featured-products .product-gallery {
   display: grid;
@@ -251,4 +319,37 @@ button {
 
 button:hover {
   background: #00695c;
+}
+
+/* Contact Page Employee Profiles */
+.contact-team {
+    margin: 2rem 0;
+    text-align: center;
+}
+.contact-team h2 {
+    margin-bottom: 1.5rem;
+}
+.contact-team .profiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.contact-team figure {
+    text-align: center;
+}
+.contact-team img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+.contact-team img:hover {
+    transform: scale(1.05);
+}
+.contact-team figcaption {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    color: var(--accent1-color);
 }

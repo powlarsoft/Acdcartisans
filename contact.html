@@ -29,24 +29,79 @@
     </nav>
   </header>
 
-  <section class="contact">
-    <h2>Contact Us</h2>
-    <p>We’d love to hear from you! Reach out for product inquiries, quotes, or support.</p>
-    
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <input type="tel" placeholder="Your Phone" required>
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    
-    <div class="contact-info">
-      <p><strong>Phone:</strong> <a href="tel:08001234567">0800-123-4567</a></p>
-      <p><strong>Email:</strong> info@acdcartisans.com</p>
-      <p><strong>Location:</strong> Port Harcourt, Rivers State, Nigeria</p>
-    </div>
-  </section>
+  <!-- Contact Block: Company Info + Map + Form -->
+    <section class="contact-block">
+      <!-- Company Info -->
+      <div class="company-info">
+        <h1>ACDC Artisans </h1>
+        <p>29 Olatunde Isaac Close, Beckley Estate, <br>Agege Lagos, Nigeria</p>
+        <p>Phone: +234 806 599 4547</p>
+        <p>Email: telly@acdcartisans.com</p>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="contact-layout">
+        <!-- Map -->
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6512733.131981885!2d-124.5988976998478!3d37.15161820246821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20Main%20River%20Street%20Kolob%2C%20California!5e0!3m2!1sen!2sng!4v1781398321029!5m2!1sen!2sng"
+            style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+
+                <!-- Form -->
+        <div class="contact-form">
+          <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <fieldset>
+              <legend>Message Purpose:</legend>
+              <label><input type="radio" name="purpose" value="general" required> General
+                Inquiry</label>
+              <label><input type="radio" name="purpose" value="reservation"> Sales
+                Question</label>
+              <label><input type="radio" name="purpose" value="suggestion"> Website
+                Suggestion</label>
+            </fieldset>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <label>
+              <input type="checkbox" name="newsletter"> Please subscribe me to the monthly
+              newsletter
+            </label>
+
+            <button type="submit" class="btn-submit">Get in Touch!</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+       <!-- Employee Profiles -->
+    <section class="contact-team">
+      <h2>We Are Here to Serve You</h2>
+      <div class="profiles">
+        <figure>
+          <img src="assets/images/pathway.png" alt="CEO/Director Telly">
+          <figcaption>Telly — CEO/Director</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/ccare.png" alt="Customer Support Hope">
+          <figcaption>Hope — Customer Support</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/images/powellnana3.jpg" alt="Safety Instructor Powell">
+          <figcaption>Powell — Software Developer</figcaption>
+        </figure>
+      </div>
+    </section>
 
   <footer>
     <p>&copy; 2026 AC/DC Artisans • Solar Power Solutions</p>
