@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - AC/DC Artisans</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
+      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" 
+           onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
       <h2>AC/DC Artisans</h2>
     </div>
     <nav>
@@ -29,84 +31,113 @@
     </nav>
   </header>
 
-  <!-- Contact Block: Company Info + Map + Form -->
+  <main>
+    <!-- Contact Block -->
     <section class="contact-block">
-      <!-- Company Info -->
       <div class="company-info">
-        <h1>ACDC Artisans </h1>
-        <p>29 Olatunde Isaac Close, Beckley Estate, <br>Agege Lagos, Nigeria</p>
-        <p>Phone: +234 806 599 4547</p>
-        <p>Email: telly@acdcartisans.com</p>
+        <h1>Contact AC/DC Artisans</h1>
+        <p><strong>Address:</strong> 29 Olatunde Isaac Close, Beckley Estate, Agege, Lagos, Nigeria</p>
+        <p><strong>Phone:</strong> <a href="tel:+2348065994547">+234 806 599 4547</a></p>
+        <p><strong>Email:</strong> <a href="mailto:telly@acdcartisans.com">telly@acdcartisans.com</a></p>
+        <p><strong>CEO:</strong> Telly Nana</p>
       </div>
 
-      <!-- Two-column layout -->
       <div class="contact-layout">
-        <!-- Map -->
+        <!-- Google Map -->
         <div class="map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d6512733.131981885!2d-124.5988976998478!3d37.15161820246821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20Main%20River%20Street%20Kolob%2C%20California!5e0!3m2!1sen!2sng!4v1781398321029!5m2!1sen!2sng"
-            style="border:0;" allowfullscreen="" loading="lazy"
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.1173229686024!2d3.2425690735647366!3d6.632348093362057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9a133b5dbb01%3A0x42f10787907dc29a!2sIsaac%20Akande%20Cl%2C%20Alimosho%2C%20Abule-Egba%2FAboru%2FMeiran%2FAlagbado%20102213%2C%20Lagos!5e0!3m2!1sen!2sng!4v1782081789153!5m2!1sen!2sng" 
+            allowfullscreen="" 
+            loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
 
-
-                <!-- Form -->
+        <!-- Contact Form -->
         <div class="contact-form">
-          <form>
-            <label for="name">Name:</label>
+          <h2>Send Us a Message</h2>
+          <form id="contactForm">
+            <label for="name">Full Name <span class="required">*</span></label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
+            <label for="email">Email Address <span class="required">*</span></label>
             <input type="email" id="email" name="email" required>
 
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+
             <fieldset>
-              <legend>Message Purpose:</legend>
-              <label><input type="radio" name="purpose" value="general" required> General
-                Inquiry</label>
-              <label><input type="radio" name="purpose" value="reservation"> Sales
-                Question</label>
-              <label><input type="radio" name="purpose" value="suggestion"> Website
-                Suggestion</label>
+              <legend>Message Purpose <span class="required">*</span></legend>
+              <label><input type="radio" name="purpose" value="general" required> General Inquiry</label>
+              <label><input type="radio" name="purpose" value="sales"> Sales / Product Question</label>
+              <label><input type="radio" name="purpose" value="installation"> Installation / Quote Request</label>
+              <label><input type="radio" name="purpose" value="suggestion"> Suggestion / Feedback</label>
             </fieldset>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <label for="message">Your Message <span class="required">*</span></label>
+            <textarea id="message" name="message" rows="6" required></textarea>
 
-            <label>
-              <input type="checkbox" name="newsletter"> Please subscribe me to the monthly
-              newsletter
+            <label class="checkbox-label">
+              <input type="checkbox" name="newsletter"> 
+              Subscribe me to the monthly solar tips newsletter
             </label>
 
-            <button type="submit" class="btn-submit">Get in Touch!</button>
+            <button type="submit" class="btn-submit">Send Message</button>
           </form>
         </div>
       </div>
     </section>
 
-       <!-- Employee Profiles -->
+    <!-- Team Section -->
     <section class="contact-team">
       <h2>We Are Here to Serve You</h2>
       <div class="profiles">
         <figure>
-          <img src="assets/images/pathway.png" alt="CEO/Director Telly">
-          <figcaption>Telly — CEO/Director</figcaption>
+          <img src="assets/images/pathway.png" alt="Telly Nana - CEO">
+          <figcaption>Telly Nana<br><small>CEO & Director</small></figcaption>
         </figure>
         <figure>
-          <img src="assets/images/ccare.png" alt="Customer Support Hope">
-          <figcaption>Hope — Customer Support</figcaption>
+          <img src="assets/images/ccare.png" alt="Hope - Customer Support">
+          <figcaption>Hope<br><small>Customer Support</small></figcaption>
         </figure>
         <figure>
-          <img src="assets/images/powellnana3.jpg" alt="Safety Instructor Powell">
-          <figcaption>Powell — Software Developer</figcaption>
+          <img src="assets/images/powellnana3.jpg" alt="Powell Nana - Developer">
+          <figcaption>Powell Nana<br><small>Software Developer</small></figcaption>
         </figure>
       </div>
     </section>
+  </main>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2348065994547" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp_Logo_2.png" alt="WhatsApp">
+  </a>
 
   <footer>
-    <p>&copy; 2026 AC/DC Artisans • Solar Power Solutions</p>
+    <p>&copy; 2026 AC/DC Artisans • Power Without Limits • Lagos, Nigeria</p>
   </footer>
 
   <script src="js/app.js"></script>
+
+  <!-- Contact Form Script -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      
+      alert(`✅ Thank you, ${name}! Your message has been received.\n\nWe will get back to you shortly.`);
+      
+      this.reset();
+    });
+
+    // Mobile Menu Toggle (if not already in app.js)
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

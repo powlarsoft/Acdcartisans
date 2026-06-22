@@ -4,14 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Cart - AC/DC Artisans</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
-      <h2>AC/DC Artisans</h2>
+      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" 
+           onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
+      <div>
+        <h2>AC/DC Artisans</h2>
+        <p class="tagline-small">Power Without Limits</p>
+      </div>
     </div>
     <nav>
       <div class="search-bar">
@@ -21,35 +26,152 @@
       <ul id="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="product.html">Shop</a></li>
-        <li><a href="cart.html" id="cart-link">Cart</a></li>
+        <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="#" onclick="adminLogin()">Admin</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Your Shopping Cart</h1>
-    <section class="cart-summary">
-      <table>
-        <thead>
-          <tr><th>Product</th><th>Qty</th><th>Price</th><th>Total</th><th></th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-      <p class="subtotal"></p>
-    </section>
+  <main class="cart-page">
+    <div class="cart-container">
+      <h1>Your Shopping Cart</h1>
+      
+      <div id="cart-items" class="cart-items"></div>
 
-    <section class="checkout">
-      <button onclick="processPayment()">Proceed to Checkout</button>
-    </section>
+      <!-- Empty State -->
+      <div id="empty-cart" class="empty-cart" style="display: none; text-align: center; padding: 4rem 2rem;">
+        <h2>Your cart is empty</h2>
+        <p>Start adding some solar products to get started.</p>
+        <a href="product.html" class="btn-primary" style="display: inline-block; margin-top: 1.5rem;">Browse Products</a>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-summary" id="cart-summary">
+        <h2>Order Summary</h2>
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td id="subtotal">₦0</td>
+          </tr>
+          <tr>
+            <td>Delivery Fee (Lagos)</td>
+            <td>₦15,000</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total</strong></td>
+            <td id="total">₦0</td>
+          </tr>
+        </table>
+
+        <button class="btn-submit checkout-btn" onclick="proceedToCheckout()">
+          Proceed to Checkout
+        </button>
+        
+        <a href="product.html" class="continue-shopping">← Continue Shopping</a>
+      </div>
+    </div>
   </main>
 
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/2348065994547" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp_Logo_2.png" alt="WhatsApp">
+  </a>
+
   <footer>
-    <p>&copy; 2026 AC/DC Artisans</p>
+    <p>&copy; 2026 AC/DC Artisans • Power Without Limits • Lagos, Nigeria</p>
   </footer>
 
   <script src="js/app.js"></script>
+
+  <script>
+    let cart = [];
+
+    function loadCart() {
+      cart = JSON.parse(localStorage.getItem('cart')) || [];
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const emptyDiv = document.getElementById('empty-cart');
+      const summaryDiv = document.getElementById('cart-summary');
+
+      container.innerHTML = '';
+
+      if (cart.length === 0) {
+        emptyDiv.style.display = 'block';
+        summaryDiv.style.display = 'none';
+        updateCartCount();
+        return;
+      }
+
+      emptyDiv.style.display = 'none';
+      summaryDiv.style.display = 'block';
+
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        subtotal += item.price * item.quantity;
+
+        const itemHTML = `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+              <h3>${item.name}</h3>
+              <p>₦${item.price.toLocaleString()}</p>
+            </div>
+            <div class="cart-item-quantity">
+              <button onclick="changeQuantity(${index}, -1)">–</button>
+              <span>${item.quantity}</span>
+              <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+            <div class="cart-item-total">
+              ₦${(item.price * item.quantity).toLocaleString()}
+            </div>
+            <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        `;
+        container.innerHTML += itemHTML;
+      });
+
+      document.getElementById('subtotal').textContent = `₦${subtotal.toLocaleString()}`;
+      document.getElementById('total').textContent = `₦${(subtotal + 15000).toLocaleString()}`;
+      
+      updateCartCount();
+    }
+
+    function changeQuantity(index, change) {
+      cart[index].quantity += change;
+      if (cart[index].quantity < 1) cart[index].quantity = 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+
+    function updateCartCount() {
+      let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = totalItems;
+    }
+
+    function proceedToCheckout() {
+      if (cart.length === 0) return;
+      alert("🎉 Thank you! Your order has been received.\n\nWe will contact you shortly via WhatsApp or phone to complete payment and delivery.");
+      // In future: redirect to checkout page or payment gateway
+    }
+
+    // Initialize
+    window.onload = loadCart;
+
+    // Mobile Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+  </script>
 </body>
 </html>

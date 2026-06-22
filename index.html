@@ -4,25 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AC/DC Artisans - Solar & Power Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
-      <h2>AC/DC Artisans</h2>
+      <img src="assets/images/logo.jpg" alt="AC/DC ARTISANS" 
+           onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
+      <div>
+        <h2>AC/DC Artisans</h2>
+        <p class="tagline-small">Power Without Limits</p>
+      </div>
     </div>
     <nav>
       <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search products...">
+        <input type="text" id="searchInput" placeholder="Search inverters, batteries, panels...">
       </div>
       <div class="hamburger">☰</div>
       <ul id="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="product.html">Shop</a></li>
-        <li><a href="cart.html" id="cart-link">Cart</a></li>
+        <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="#" onclick="adminLogin()">Admin</a></li>
@@ -30,13 +34,15 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>Power Your Home with Solar Energy</h1>
-    <p>Reliable Solar Products • Premium Batteries • Expert Installation</p>
-    <div class="hero-buttons">
-      <button onclick="location.href='product.html'">Shop Now</button>
-      <button onclick="location.href='cart.html'">Get Quote</button>
+    <div class="hero-content">
+      <h1>Reliable Solar Power Solutions</h1>
+      <p class="tagline">For Nigerian Homes & Businesses</p>
+      <div class="hero-buttons">
+        <button onclick="location.href='product.html'" class="btn-primary">Shop Now</button>
+        <button onclick="location.href='contact.html'" class="btn-secondary">Get Installation Quote</button>
+      </div>
     </div>
   </section>
 
@@ -44,10 +50,22 @@
   <section class="categories">
     <h2>Shop by Category</h2>
     <div class="grid">
-      <div onclick="location.href='product.html'">Solar Panels</div>
-      <div onclick="location.href='product.html'">Inverters</div>
-      <div onclick="location.href='product.html'">Batteries</div>
-      <div onclick="location.href='product.html'">Accessories</div>
+      <div onclick="location.href='product.html'" class="category-card">
+        <h3>Solar Panels</h3>
+        <p>High-efficiency monocrystalline panels</p>
+      </div>
+      <div onclick="location.href='product.html'" class="category-card">
+        <h3>Inverters</h3>
+        <p>Hybrid & Pure Sine Wave Inverters</p>
+      </div>
+      <div onclick="location.href='product.html'" class="category-card">
+        <h3>Batteries</h3>
+        <p>Lithium & Gel Deep Cycle Batteries</p>
+      </div>
+      <div onclick="location.href='product.html'" class="category-card">
+        <h3>Accessories</h3>
+        <p>Charge Controllers, Cables & More</p>
+      </div>
     </div>
   </section>
 
@@ -55,12 +73,117 @@
   <section class="featured-products">
     <h2>Featured Products</h2>
     <div class="product-gallery" id="featured-grid"></div>
+    <div class="text-center">
+      <a href="product.html" class="view-all">View All Products →</a>
+    </div>
   </section>
 
+  <!-- Trust Bar -->
+  <section class="trust-bar">
+    <p>✅ 5 Years Warranty • ✅ Fast Delivery in Lagos • ✅ Professional Installation Available</p>
+  </section>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/2348065994547" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp_Logo_2.png" alt="WhatsApp">
+  </a>
+
   <footer>
-    <p>&copy; 2026 AC/DC Artisans • Solar Power Solutions</p>
+    <p>&copy; 2026 AC/DC Artisans • Power Without Limits • Lagos, Nigeria</p>
   </footer>
 
   <script src="js/app.js"></script>
+
+  <!-- Homepage Scripts -->
+  <script>
+    // Featured Products
+    const featuredProducts = [
+      {
+        name: "200Ah Lithium Battery",
+        price: 250000,
+        image: "assets/images/battery.png"
+      },
+      {
+        name: "Felicity 6kVA Hybrid Inverter",
+        price: 1850000,
+        image: "assets/images/6kvahybrid_inverter.jpg"
+      },
+      {
+        name: "550W Monocrystalline Solar Panel",
+        price: 185000,
+        image: "assets/images/550watts_solar_panel.jpg"
+      }
+    ];
+
+    const grid = document.getElementById('featured-grid');
+
+    featuredProducts.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p class="price">₦${product.price.toLocaleString()}</p>
+        <button class="add-to-cart" 
+                data-name="${product.name}" 
+                data-price="${product.price}"
+                data-image="${product.image}">
+          Add to Cart
+        </button>
+      `;
+      grid.appendChild(card);
+    });
+
+    // Add to Cart Function
+    function addToCart(name, price, image) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      const existingItem = cart.find(item => item.name === name);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          name: name,
+          price: parseInt(price),
+          image: image,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      
+      alert(`✅ ${name} has been added to your cart!`);
+    }
+
+    // Update Cart Count
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = totalItems;
+    }
+
+    // Attach Add to Cart listeners
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('add-to-cart')) {
+        const name = e.target.getAttribute('data-name');
+        const price = e.target.getAttribute('data-price');
+        const image = e.target.getAttribute('data-image');
+        addToCart(name, price, image);
+      }
+    });
+
+    // Mobile Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+
+    // Initialize on page load
+    window.onload = updateCartCount;
+  </script>
 </body>
 </html>
