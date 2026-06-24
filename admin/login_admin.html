@@ -60,16 +60,24 @@
       cursor: pointer;
       margin-top: 1rem;
     }
-    .login-btn:hover {
-      background: #00695c;
-    }
   </style>
 </head>
 <body>
+  <!-- Simple Admin Header -->
+  <header style="background: #004d40; color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;">
+    <div class="logo">
+      <img src="../assets/images/logo.jpg" alt="AC/DC ARTISANS" 
+           onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
+      <div>
+        <h2 style="color:white;">AC/DC Artisans</h2>
+        <p style="color:#ffcc00; margin:0; font-size:0.9rem;">Admin Portal</p>
+      </div>
+    </div>
+    <a href="../index.html" style="color:white; text-decoration:none;">← Back to Store</a>
+  </header>
+
   <div class="login-container">
     <div class="login-box">
-      <img src="../assets/images/logo.jpg" alt="AC/DC Artisans" 
-           onerror="this.src='https://via.placeholder.com/120x60/004d40/fff?text=ACDC';">
       <h1>Admin Login</h1>
       <p style="color:#666; margin-bottom: 2rem;">Sign in to manage your store</p>
 
@@ -88,9 +96,7 @@
       </form>
 
       <p style="margin-top: 1.5rem; font-size: 0.9rem; color:#666;">
-        Demo Credentials:<br>
-        <strong>Username:</strong> admin<br>
-        <strong>Password:</strong> admin123
+        Demo: <strong>admin</strong> / <strong>admin123</strong>
       </p>
     </div>
   </div>
@@ -98,16 +104,14 @@
   <script>
     document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // Simple demo login
-      if ((username === "admin" || username === "admin@acdcartisans.com") && password === "admin123") {
+      if ((username === "admin" || username.includes("acdcartisans")) && password === "admin123") {
         alert("✅ Login Successful!");
         window.location.href = "dashboard.html";
       } else {
-        alert("❌ Invalid credentials. Try again.\n\nHint: admin / admin123");
+        alert("❌ Invalid credentials.\n\nHint: admin / admin123");
       }
     });
   </script>

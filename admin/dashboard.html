@@ -8,22 +8,17 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
+  <!-- Admin Header -->
+  <header style="background: #004d40; color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;">
     <div class="logo">
       <img src="../assets/images/logo.jpg" alt="AC/DC ARTISANS" 
            onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
       <div>
-        <h2>AC/DC Artisans</h2>
-        <p class="tagline-small">Admin Portal</p>
+        <h2 style="color:white;">AC/DC Artisans</h2>
+        <p style="color:#ffcc00; margin:0; font-size:0.9rem;">Admin Portal</p>
       </div>
     </div>
-    <nav>
-      <div class="search-bar">
-        <input type="text" placeholder="Search orders, products...">
-      </div>
-      <a href="../index.html" class="btn-secondary" style="margin-right: 15px;">← View Store</a>
-    </nav>
+    <a href="../index.html" style="color:white; text-decoration:none; font-weight:500;">← Back to Store</a>
   </header>
 
   <div class="admin-dashboard">
@@ -122,14 +117,6 @@
       if (confirm("Are you sure you want to logout?")) {
         window.location.href = "../index.html";
       }
-    }
-
-    // Mobile Menu (if needed)
-    const hamburger = document.querySelector('.hamburger');
-    if (hamburger) {
-      hamburger.addEventListener('click', () => {
-        document.getElementById('nav-menu').classList.toggle('active');
-      });
     }
   </script>
 </body>
