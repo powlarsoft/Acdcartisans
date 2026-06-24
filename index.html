@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AC/DC Artisans - Solar & Power Solutions</title>
+  <title>AC/DC Artisans | Reliable Solar Power Solutions</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,7 +15,7 @@
            onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
       <div>
         <h2>AC/DC Artisans</h2>
-        <p class="tagline-small">Power Without Limits</p>
+        <p class="tagline-small">Reliable Solar Power Solutions</p>
       </div>
     </div>
     <nav>
@@ -29,7 +29,7 @@
         <li><a href="cart.html" id="cart-link">Cart (<span id="cart-count">0</span>)</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="#" onclick="adminLogin()">Admin</a></li>
+        <li><a href="admin/login_admin.html">Admin</a></li>
       </ul>
     </nav>
   </header>
@@ -89,7 +89,7 @@
   </a>
 
   <footer>
-    <p>&copy; 2026 AC/DC Artisans • Power Without Limits • Lagos, Nigeria</p>
+    <p>&copy; 2026 AC/DC Artisans • Reliable Solar Power Solutions • Lagos, Nigeria</p>
   </footer>
 
   <script src="js/app.js"></script>
@@ -137,7 +137,6 @@
     // Add to Cart Function
     function addToCart(name, price, image) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      
       const existingItem = cart.find(item => item.name === name);
       
       if (existingItem) {
@@ -153,7 +152,6 @@
 
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
-      
       alert(`✅ ${name} has been added to your cart!`);
     }
 
