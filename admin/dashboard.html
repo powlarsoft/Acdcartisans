@@ -9,13 +9,12 @@
 </head>
 <body>
   <!-- Admin Header -->
-  <header style="background: #004d40; color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;">
+  <header style="background: var(--primary-color); color: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;">
     <div class="logo">
-      <img src="../assets/images/logo.jpg" alt="AC/DC ARTISANS" 
-           onerror="this.src='https://via.placeholder.com/180x55/004d40/fff?text=ACDC+ARTISANS';">
+      <img src="../assets/images/logo.jpg" alt="AC/DC ARTISANS">
       <div>
         <h2 style="color:white;">AC/DC Artisans</h2>
-        <p style="color:#ffcc00; margin:0; font-size:0.9rem;">Admin Portal</p>
+        <p style="color:#ffcc00; margin:0;">Admin Portal</p>
       </div>
     </div>
     <a href="../index.html" style="color:white; text-decoration:none; font-weight:500;">← Back to Store</a>
@@ -34,7 +33,7 @@
         <li><a href="#">⚙️ Settings</a></li>
       </ul>
 
-      <button onclick="logout()" class="logout-btn">
+      <button onclick="logout()" class="logout-btn" style="margin-top: 3rem; width:100%;">
         Logout
       </button>
     </aside>
@@ -42,9 +41,8 @@
     <!-- Main Content -->
     <main class="admin-main">
       <h1>Welcome back, Telly 👋</h1>
-      <p style="color:#555; margin-bottom: 2rem;">Here's what's happening with your business today</p>
+      <p style="color:#555;">Here's what's happening with your business today</p>
 
-      <!-- Stats -->
       <div class="stats-grid">
         <div class="stat-card">
           <h3>₦12.8M</h3>
@@ -64,7 +62,6 @@
         </div>
       </div>
 
-      <!-- Recent Orders -->
       <div class="admin-card">
         <h2>Recent Orders</h2>
         <table>
@@ -92,22 +89,8 @@
               <td><span class="status processing">Processing</span></td>
               <td>Yesterday</td>
             </tr>
-            <tr>
-              <td>#ORD-1026</td>
-              <td>Emeka Obi</td>
-              <td>₦185,000</td>
-              <td><span class="status shipped">Shipped</span></td>
-              <td>2 days ago</td>
-            </tr>
           </tbody>
         </table>
-      </div>
-
-      <!-- Quick Actions -->
-      <div class="admin-card">
-        <h2>Quick Actions</h2>
-        <button onclick="alert('Product management coming soon...')">+ Add New Product</button>
-        <button onclick="alert('Order management coming soon...')">View All Orders</button>
       </div>
     </main>
   </div>
